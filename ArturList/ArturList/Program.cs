@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 namespace ArturList
 {
+        #region legacy
     public interface IArtList<T>
     {
         void Add(T value);
@@ -110,17 +111,115 @@ namespace ArturList
             Hivand erkrordEndunvacHivand = hert.EndunelHivandin();
             Hivand errordEndunvacHivand = hert.EndunelHivandin();
             
-
             if (arajinEndunvacHivand.Name == "Suro" && hert.Qanak == 0)
                 Console.WriteLine("Cragire chisht ashxatec!");
             else
                 Console.WriteLine("Cragire sxal ashxatec!");
         }
-		static void Main(string[] args)
+
+        #endregion
+
+        #region new
+
+        public class Hanguyc<T>
         {
-            // StugelListe();
-            //StugelQueue();
-            StugelHivandanociHerte();
+            public Hanguyc<T> Hajord { get; set; }
+            public Hanguyc<T> Naxord { get; set; }
+            public T Arjek { get; set; }
+        }
+
+        public interface ICucak<T>
+        {
+            void Avelacnel(T arjek);
+            T Veradarcnel(int hamar);
+        }
+        public class Cucak<T> : ICucak<string>
+        {
+            protected Hanguyc<string>  _arachin;
+            protected Hanguyc<string>  _verchin;
+            
+            public virtual void Avelacnel(string arjek)
+            {
+                Hanguyc<string> hang = new Hanguyc<string>();
+
+                if (_verchin == null)
+                {
+                    _verchin = hang;
+                    _verchin.Arjek = arjek;
+
+                    _arachin = hang;
+                    _arachin.Arjek = arjek;
+                }
+                else
+                {
+                    hang.Arjek = arjek;
+
+                    _verchin.Hajord = hang;
+                    hang.Naxord = _verchin;
+                    _verchin = hang;
+                }
+            }
+
+            public string Veradarcnel(int hamar)
+            {
+                Hanguyc<string> veradarcvec = _arachin;
+
+                for (int i = 1; i < hamar; i++)
+                {
+                    veradarcvec = veradarcvec.Hajord;
+                }
+                return veradarcvec.Arjek;
+            }
+        }
+
+        public interface IHert<T>
+        {
+            void Avelacnel(T arjek);
+            T HerticHanel();
+        }
+
+        public class Hert<T> : Cucak<T>, IHert<string>
+        {
+            public override void Avelacnel(string arjek)
+            {
+                base.Avelacnel(arjek);
+            }
+
+            public string HerticHanel()
+            {
+                Hanguyc<string> entacik = _arachin;
+
+                _arachin = _arachin.Hajord;
+                return entacik.Arjek;
+            }
+        }
+
+        #endregion
+
+        public static void HertiTest()
+        {
+            Hert<string> imHert = new Hert<string>();
+            imHert.Avelacnel("test1");
+            imHert.Avelacnel("test2");
+            imHert.Avelacnel("test3");
+            imHert.Avelacnel("test4");
+            imHert.Avelacnel("test5");
+
+            string arachin = imHert.HerticHanel();
+            string erord = imHert.Veradarcnel(2);
+            string ekrord = imHert.HerticHanel();
+            imHert.HerticHanel();
+            string hingErord = imHert.Veradarcnel(2);
+
+            if (arachin == "test1" && erord == "test3" && ekrord == "test2" && hingErord == "test5")
+                Console.WriteLine("Cragire chisht ashxatec");
+            else
+                Console.WriteLine("Cragire sxal ashxatec");
+        }
+
+        static void Main(string[] args)
+        {
+            HertiTest();
         }
     }
 }
