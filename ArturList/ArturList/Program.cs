@@ -38,7 +38,6 @@ namespace ArturList
             }
 
         }
-
         public T Get(int hamar)
         {
             ArtNode<T> currentElement;
@@ -51,11 +50,9 @@ namespace ArturList
             return currentElement.Value;
         }
     }
-
     public class ArtList { }
     class Program
     {
-
         private static void StugelListe()
         {
             ArtList<string> strList = new ArtList<string>();
@@ -81,10 +78,8 @@ namespace ArturList
             else
                 Console.WriteLine("Cragire normal chashxatec");
         }
-
         private static void StugelQueue()
         {
-            
             IQueue<int> queue = new ArtQueue<int>();
             queue.Enqueue(3);
             queue.Enqueue(1);
@@ -114,6 +109,7 @@ namespace ArturList
             Hivand arajinEndunvacHivand = hert.EndunelHivandin();
             Hivand erkrordEndunvacHivand = hert.EndunelHivandin();
             Hivand errordEndunvacHivand = hert.EndunelHivandin();
+            
 
             if (arajinEndunvacHivand.Name == "Suro" && hert.Qanak == 0)
                 Console.WriteLine("Cragire chisht ashxatec!");
