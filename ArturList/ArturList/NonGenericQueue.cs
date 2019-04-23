@@ -38,18 +38,11 @@ namespace ArturList
         public Hivand EndunelHivandin()
         {
             _qanak--;
-            if (_arachinMtav == null)
-            {
-                _arachinMtav = _arachinHertum;
-                return _arachinMtav;
-            }
-            else
-            {
-                _arachinMtav.Teghekutyun.Hajord = _arachinHertum.Teghekutyun.Hajord;
-                return _arachinMtav;
-            }
+            Hivand mtav = _arachinHertum;
+            
+            _arachinHertum = _arachinHertum.Teghekutyun.Hajord;
+            return mtav;
         }
-
         public void KangnacnelHivandinHertiMech(string anun, string azganun, string gangat)
         {
             _qanak++;
