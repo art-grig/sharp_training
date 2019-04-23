@@ -109,16 +109,17 @@ namespace ArturList
 
             hert.KangnacnelHivandinHertiMech("Suro", "Gonzales", "Xelar");
             hert.KangnacnelHivandinHertiMech("Karen", "xhazaryan", "poshkek");
+            hert.KangnacnelHivandinHertiMech("Aram", "xhazaryan", "poshkek");
 
-            Hivand endunvacHivand = hert.EndunelHivandin();
-            
-            
-            if (endunvacHivand.Name == "Suro" && hert.Qanak == 1 )
+            Hivand arajinEndunvacHivand = hert.EndunelHivandin();
+            Hivand erkrordEndunvacHivand = hert.EndunelHivandin();
+            Hivand errordEndunvacHivand = hert.EndunelHivandin();
+
+            if (arajinEndunvacHivand.Name == "Suro" && hert.Qanak == 0)
                 Console.WriteLine("Cragire chisht ashxatec!");
             else
                 Console.WriteLine("Cragire sxal ashxatec!");
         }
-
 		static void Main(string[] args)
         {
             // StugelListe();

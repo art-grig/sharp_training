@@ -30,7 +30,7 @@ namespace ArturList
     {
         private Hivand _verchin;
         private Hivand _arachinHertum;
-
+        private Hivand _arachinMtav;
         private int _qanak;
 
         public int Qanak { get { return _qanak; } }
@@ -38,23 +38,16 @@ namespace ArturList
         public Hivand EndunelHivandin()
         {
             _qanak--;
-            
-            Hivand _arachin = _arachinHertum;
-            for (int i = 0; i < _qanak; i++)
+            if (_arachinMtav == null)
             {
-                if (i == 0)
-                {
-                    return _arachin;
-                }
-                else
-                {
-                    _arachinHertum = _arachin.Teghekutyun.Hajord; 
-                }
-                
+                _arachinMtav = _arachinHertum;
+                return _arachinMtav;
             }
-            _arachinHertum.Teghekutyun.Hajord = _verchin;
-            return _verchin;
-            
+            else
+            {
+                _arachinMtav.Teghekutyun.Hajord = _arachinHertum.Teghekutyun.Hajord;
+                return _arachinMtav;
+            }
         }
 
         public void KangnacnelHivandinHertiMech(string anun, string azganun, string gangat)
