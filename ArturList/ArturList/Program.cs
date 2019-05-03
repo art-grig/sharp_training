@@ -159,7 +159,6 @@ namespace ArturList
                     _verchin = hang;
                 }
             }
-
             public string Veradarcnel(int hamar)
             {
                 Hanguyc<string> veradarcvec = _arachin;
@@ -172,11 +171,15 @@ namespace ArturList
             }
         }
 
+        
+
         public interface IHert<T>
         {
             void Avelacnel(T arjek);
             T HerticHanel();
         }
+
+        
 
         public class Hert<T> : Cucak<T>, IHert<string>
         {
@@ -217,9 +220,29 @@ namespace ArturList
                 Console.WriteLine("Cragire sxal ashxatec");
         }
 
+        public static void CanotovHert()
+        {
+            BjishkiMot bjshkiHert = new BjishkiMot();
+
+            bjshkiHert.HertKangnel(3);
+            bjshkiHert.HertKangnel(2);
+            bjshkiHert.HertKangnel(14);
+            bjshkiHert.HertKangnel(5);
+
+            HivandMard arachinHivand = bjshkiHert.HerticHelnel();
+            HivandMard erkrodHivand = bjshkiHert.HerticHelnel();
+            HivandMard errordHivand = bjshkiHert.HerticHelnel();
+
+            if (arachinHivand.Dram == 14 && erkrodHivand.Dram == 5 && errordHivand.Dram == 3)
+                Console.WriteLine("Cragire jisht ashxatec");
+            else
+                Console.WriteLine("Cragire sxal ashxatec");
+        }
+
         static void Main(string[] args)
         {
-            HertiTest();
+            //HertiTest();
+            CanotovHert();
         }
     }
 }
