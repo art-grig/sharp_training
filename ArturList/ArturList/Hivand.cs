@@ -82,6 +82,10 @@ namespace ArturList
             {
                 if (entacikHivand.Dram >= hamematvoxHivand.Dram)
                 {
+                    if (hamematvoxHivand.hertakanutyun.Hajord == null)
+                    {
+                        continue;
+                    }
                     hamematvoxHivand = hamematvoxHivand.hertakanutyun.Hajord;
                 }
                 else
@@ -95,15 +99,23 @@ namespace ArturList
                         entacikHivand.hertakanutyun.Naxord = hamematvoxHivand;
                         hamematvoxHivand.hertakanutyun.Naxord = _arachin;
                         _arachin.hertakanutyun.Hajord = hamematvoxHivand;
-                        break;
+                        continue;
                     }
                     hamematvoxHivand.hertakanutyun.Naxord.hertakanutyun.Hajord = hamematvoxHivand.hertakanutyun.Hajord;
                     hamematvoxHivand.hertakanutyun.Hajord.hertakanutyun.Naxord = hamematvoxHivand.hertakanutyun.Naxord;
                     entacikHivand.hertakanutyun.Naxord = hamematvoxHivand;
                     hamematvoxHivand.hertakanutyun.Hajord = entacikHivand;
-                    
-                    hamematvoxHivand.hertakanutyun.Naxord = null;
-                    _arachin = hamematvoxHivand;
+
+                    if (hamematvoxHivand.Dram > _arachin.Dram)
+                    {
+                        _arachin = hamematvoxHivand;
+                    }
+                    else
+                    {
+                        _arachin.hertakanutyun.Hajord = hamematvoxHivand;
+                        hamematvoxHivand.hertakanutyun.Naxord = _arachin;
+                    }
+
 
                     hamematvoxHivand = hamematvoxHivand.hertakanutyun.Hajord.hertakanutyun.Hajord.hertakanutyun.Hajord;
                 }

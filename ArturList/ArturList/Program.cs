@@ -228,6 +228,7 @@ namespace ArturList
             bjshkiHert.HertKangnel(2);
             bjshkiHert.HertKangnel(14);
             bjshkiHert.HertKangnel(5);
+            bjshkiHert.HertKangnel(1);
 
             HivandMard arachinHivand = bjshkiHert.HerticHelnel();
             HivandMard erkrodHivand = bjshkiHert.HerticHelnel();
