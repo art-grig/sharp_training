@@ -77,6 +77,7 @@ namespace ArturList
         {
             HivandMard entacikHivand = _arachin;
             HivandMard hamematvoxHivand = _arachin.hertakanutyun.Hajord;
+            _arachin.hertakanutyun.Naxord = null;
 
             for (int i = 0; i < _qanak-1; i++)
             {
@@ -90,33 +91,48 @@ namespace ArturList
                 }
                 else
                 {
+                    if (entacikHivand.hertakanutyun.Naxord == null)
+                    {
+
+                        hamematvoxHivand.hertakanutyun.Naxord.hertakanutyun.Hajord = hamematvoxHivand.hertakanutyun.Hajord;
+                        hamematvoxHivand.hertakanutyun.Hajord.hertakanutyun.Naxord = hamematvoxHivand.hertakanutyun.Naxord;
+                        entacikHivand.hertakanutyun.Naxord = hamematvoxHivand;
+                        hamematvoxHivand.hertakanutyun.Hajord = entacikHivand;
+
+
+                        _arachin = hamematvoxHivand;
+                        
+
+                    }
+                    else if(hamematvoxHivand.hertakanutyun.Hajord != null)
+                    {
+                        hamematvoxHivand.hertakanutyun.Naxord.hertakanutyun.Hajord = hamematvoxHivand.hertakanutyun.Hajord;
+                        hamematvoxHivand.hertakanutyun.Hajord.hertakanutyun.Naxord = hamematvoxHivand.hertakanutyun.Naxord;
+                        entacikHivand.hertakanutyun.Naxord.hertakanutyun.Hajord = hamematvoxHivand;
+                        hamematvoxHivand.hertakanutyun.Naxord = entacikHivand.hertakanutyun.Naxord; 
+                        
+                        hamematvoxHivand.hertakanutyun.Hajord = entacikHivand;
+                        entacikHivand.hertakanutyun.Naxord = hamematvoxHivand;
+
+                    }
+
                     //hamematvox hivandin berum enk araj
                     if (hamematvoxHivand.hertakanutyun.Hajord == null)
                     {
                         hamematvoxHivand.hertakanutyun.Naxord.hertakanutyun.Hajord = null;
+                        entacikHivand.hertakanutyun.Hajord = hamematvoxHivand.hertakanutyun.Naxord;
+                        hamematvoxHivand.hertakanutyun.Naxord.hertakanutyun.Naxord = entacikHivand;
 
-                        hamematvoxHivand.hertakanutyun.Hajord = entacikHivand;
+                        entacikHivand.hertakanutyun.Naxord.hertakanutyun.Hajord = hamematvoxHivand;
+                        hamematvoxHivand.hertakanutyun.Naxord = entacikHivand.hertakanutyun.Naxord;
+
                         entacikHivand.hertakanutyun.Naxord = hamematvoxHivand;
-                        hamematvoxHivand.hertakanutyun.Naxord = _arachin;
-                        _arachin.hertakanutyun.Hajord = hamematvoxHivand;
+                        hamematvoxHivand.hertakanutyun.Hajord = entacikHivand;
+
                         continue;
                     }
-                    hamematvoxHivand.hertakanutyun.Naxord.hertakanutyun.Hajord = hamematvoxHivand.hertakanutyun.Hajord;
-                    hamematvoxHivand.hertakanutyun.Hajord.hertakanutyun.Naxord = hamematvoxHivand.hertakanutyun.Naxord;
-                    entacikHivand.hertakanutyun.Naxord = hamematvoxHivand;
-                    hamematvoxHivand.hertakanutyun.Hajord = entacikHivand;
-
-                    if (hamematvoxHivand.Dram > _arachin.Dram)
-                    {
-                        _arachin = hamematvoxHivand;
-                    }
-                    else
-                    {
-                        _arachin.hertakanutyun.Hajord = hamematvoxHivand;
-                        hamematvoxHivand.hertakanutyun.Naxord = _arachin;
-                    }
-
-
+                    
+                   
                     hamematvoxHivand = hamematvoxHivand.hertakanutyun.Hajord.hertakanutyun.Hajord.hertakanutyun.Hajord;
                 }
                 

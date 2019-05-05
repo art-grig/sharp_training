@@ -228,13 +228,13 @@ namespace ArturList
             bjshkiHert.HertKangnel(2);
             bjshkiHert.HertKangnel(14);
             bjshkiHert.HertKangnel(5);
-            bjshkiHert.HertKangnel(1);
+            bjshkiHert.HertKangnel(7);
 
             HivandMard arachinHivand = bjshkiHert.HerticHelnel();
             HivandMard erkrodHivand = bjshkiHert.HerticHelnel();
             HivandMard errordHivand = bjshkiHert.HerticHelnel();
 
-            if (arachinHivand.Dram == 14 && erkrodHivand.Dram == 5 && errordHivand.Dram == 3)
+            if (arachinHivand.Dram == 14 && erkrodHivand.Dram == 7 && errordHivand.Dram == 5)
                 Console.WriteLine("Cragire jisht ashxatec");
             else
                 Console.WriteLine("Cragire sxal ashxatec");
